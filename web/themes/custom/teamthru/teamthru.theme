@@ -1,0 +1,4 @@
+<?php
+function teamthru_preprocess_html(array &$variables) {
+  $variables['attributes']['class'][] = 'theme-teamthru';
+}

@@ -1,0 +1,1 @@
+(function (Drupal, once) { Drupal.behaviors.teamthru={attach(){}};})(Drupal, once);

@@ -1,0 +1,51 @@
+{#
+/**
+ * @file
+ * TeamThru theme implementation for the primary navigation menu.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+#}
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+  {% import _self as menus %}
+  {% if items %}
+    {%
+      set menu_classes = [
+        'menu',
+        'main-nav__menu',
+        menu_level > 0 ? 'main-nav__dropdown',
+      ]
+    %}
+    <ul{{ attributes.addClass(menu_classes) }}>
+      {% for item in items %}
+        {%
+          set item_classes = [
+            'menu-item',
+            'main-nav__item',
+            item.is_expanded ? 'menu-item--expanded',
+            item.is_expanded ? 'main-nav__item--has-children',
+            item.is_collapsed ? 'menu-item--collapsed',
+            item.in_active_trail ? 'menu-item--active-trail',
+          ]
+        %}
+        <li{{ item.attributes.addClass(item_classes) }}>
+          {%
+            set link_classes = [
+              menu_level == 0 ? 'main-nav__link' : 'main-nav__dropdown-link',
+              item.in_active_trail ? 'is-active',
+            ]
+          %}
+          {{ link(item.title, item.url, {'class': link_classes}) }}
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes.removeClass(menu_classes), menu_level + 1) }}
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endmacro %}

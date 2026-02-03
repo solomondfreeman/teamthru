@@ -1,0 +1,455 @@
+/**
+ * @file
+ * Navigation component styles.
+ */
+
+/* ==================== Mobile Menu Toggle ==================== */
+.menu-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 30px;
+  height: 30px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: var(--z-fixed);
+}
+
+.menu-toggle__bar {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--white);
+  border-radius: 2px;
+  transition: all var(--transition-slow);
+}
+
+.menu-toggle.is-active .menu-toggle__bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.menu-toggle.is-active .menu-toggle__bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.is-active .menu-toggle__bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -7px);
+}
+
+@media (min-width: 992px) {
+  .menu-toggle {
+    display: none;
+  }
+}
+
+/* ==================== Main Navigation ==================== */
+.main-nav {
+  background-color: var(--tt-navy-dark);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  z-index: var(--z-sticky);
+}
+
+/* Hide navigation on mobile by default */
+@media (max-width: 991px) {
+  .main-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--tt-navy-dark);
+    box-shadow: var(--shadow-lg);
+    z-index: 1001; /* Higher than overlay */
+  }
+  
+  /* Show navigation when menu is open */
+  .main-nav.is-open {
+    display: block !important;
+  }
+  
+  /* Alternative: body class method */
+  body.mobile-menu-open .main-nav {
+    display: block !important;
+  }
+}
+
+.main-nav__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+}
+
+/* Navigation Menu - Works with Drupal menu classes */
+.main-nav__menu,
+.main-nav .menu,
+.main-nav ul.menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media (min-width: 992px) {
+  .main-nav__menu,
+  .main-nav .menu,
+  .main-nav ul.menu {
+    display: flex;
+    gap: 0;
+  }
+}
+
+@media (max-width: 991px) {
+  .main-nav__menu,
+  .main-nav .menu,
+  .main-nav ul.menu {
+    display: block;
+  }
+}
+
+/* Navigation Items */
+.main-nav__item,
+.main-nav .menu-item {
+  position: relative;
+}
+
+/* Parent menu items with submenus - flex layout for link + toggle */
+@media (max-width: 991px) {
+  .main-nav .menu-item--expanded {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+  
+  .main-nav .menu-item--expanded > a {
+    flex: 0 1 auto; /* Don't stretch, just fit content */
+  }
+}
+
+.main-nav__link,
+.main-nav .menu-item > a {
+  display: block;
+  padding: var(--space-md) var(--space-lg);
+  color: var(--white);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  transition: all var(--transition-base);
+  border-bottom: 3px solid transparent;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+/* Submenu Toggle Button (mobile only) */
+.submenu-toggle {
+  display: none;
+  width: 44px;
+  height: auto;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--space-md) var(--space-sm);
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 991px) {
+  .submenu-toggle {
+    display: flex;
+  }
+  
+  /* Remove padding-right from link since toggle is right next to it */
+  .main-nav .menu-item--expanded > a {
+    padding-right: 0;
+  }
+}
+
+.submenu-toggle__icon {
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid var(--white);
+  transition: transform var(--transition-base);
+}
+
+.menu-item--expanded.is-open > .submenu-toggle .submenu-toggle__icon {
+  transform: rotate(180deg);
+}
+
+.submenu-toggle:hover,
+.submenu-toggle:focus {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Hide the default arrow from Drupal's menu on mobile since we have a button */
+@media (max-width: 991px) {
+  .main-nav .menu-item--expanded > a::after {
+    display: none !important;
+    content: none !important;
+  }
+}
+
+.main-nav__link:hover,
+.main-nav__link.is-active,
+.main-nav .menu-item > a:hover,
+.main-nav .menu-item.menu-item--active-trail > a {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom-color: var(--tt-teal);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* Mobile Navigation Styles */
+@media (max-width: 991px) {
+  .main-nav__link,
+  .main-nav .menu-item > a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-left: 3px solid transparent;
+  }
+
+  .main-nav__link:hover,
+  .main-nav__link.is-active,
+  .main-nav .menu-item > a:hover,
+  .main-nav .menu-item.menu-item--active-trail > a {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-left-color: var(--tt-teal);
+  }
+}
+
+/* ==================== Dropdown Menus ==================== */
+.main-nav__dropdown,
+.main-nav .menu-item .menu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: var(--white);
+  min-width: 250px;
+  box-shadow: var(--shadow-lg);
+}
+
+@media (min-width: 992px) {
+  .main-nav__dropdown,
+  .main-nav .menu-item .menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: var(--z-dropdown);
+  }
+
+  .main-nav__item:hover .main-nav__dropdown,
+  .main-nav .menu-item:hover > .menu {
+    display: block;
+  }
+}
+
+@media (max-width: 991px) {
+  .main-nav__item.is-open .main-nav__dropdown,
+  .main-nav .menu-item.is-open > .menu {
+    display: block;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    flex-basis: 100%;
+  }
+}
+
+/* Dropdown Links */
+.main-nav__dropdown-link,
+.main-nav .menu-item .menu .menu-item > a {
+  display: block;
+  padding: var(--space-sm) var(--space-lg);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-normal);
+  font-size: var(--font-size-sm);
+  text-transform: none;
+  letter-spacing: normal;
+  border-left: 3px solid transparent;
+  transition: all var(--transition-base);
+}
+
+.main-nav__dropdown-link:hover,
+.main-nav .menu-item .menu .menu-item > a:hover {
+  background-color: var(--gray-lightest);
+  border-left-color: var(--tt-teal);
+  color: var(--tt-navy);
+  text-decoration: none;
+}
+
+@media (max-width: 991px) {
+  .main-nav__dropdown-link,
+  .main-nav .menu-item .menu .menu-item > a {
+    color: rgba(255, 255, 255, 0.9);
+    padding-left: calc(var(--space-lg) * 2);
+  }
+
+  .main-nav__dropdown-link:hover,
+  .main-nav .menu-item .menu .menu-item > a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--white);
+  }
+}
+
+/* Dropdown Arrow - Desktop only */
+.main-nav .menu-item--expanded > a::after {
+  content: '';
+  display: none; /* Hidden by default, shown on desktop */
+  width: 0;
+  height: 0;
+  margin-left: var(--space-sm);
+  vertical-align: middle;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid currentColor;
+  transition: transform var(--transition-base);
+}
+
+/* Show arrow only on desktop */
+@media (min-width: 992px) {
+  .main-nav .menu-item--expanded > a::after {
+    display: inline-block;
+  }
+}
+
+/* ==================== Breadcrumb ==================== */
+.breadcrumb {
+  padding: var(--space-md) 0;
+  background-color: var(--gray-lightest);
+  border-bottom: 1px solid var(--gray-lighter);
+}
+
+.breadcrumb__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  box-sizing: border-box;
+}
+
+.breadcrumb__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+}
+
+.breadcrumb__item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.breadcrumb__item:not(:last-child)::after {
+  content: '/';
+  color: var(--gray);
+}
+
+.breadcrumb__link {
+  color: var(--link-color);
+}
+
+.breadcrumb__current {
+  color: var(--text-secondary);
+}
+
+/* ==================== Mobile Navigation Overlay ==================== */
+.nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 999; /* Below the menu (1001) but above other content */
+}
+
+.nav-overlay.is-visible {
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .nav-overlay {
+    display: none !important;
+  }
+}
+
+/* ==================== Mobile Search in Navigation ==================== */
+.mobile-search {
+  display: none;
+  padding: var(--space-md) var(--space-lg);
+  background-color: var(--tt-navy-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 767px) {
+  .mobile-search {
+    display: block;
+  }
+}
+
+.mobile-search__form {
+  display: flex;
+  position: relative;
+  width: 100%;
+}
+
+/* Match header search input exactly */
+.mobile-search__input {
+  width: 100%;
+  padding: 12px 50px 12px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--white);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  -webkit-appearance: none;
+  appearance: none;
+  box-sizing: border-box;
+  transition: all var(--transition-base);
+}
+
+.mobile-search__input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.mobile-search__input:focus {
+  outline: none;
+  border-color: var(--tt-teal);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.mobile-search__btn {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.5);
+  cursor: pointer;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-search__btn:hover,
+.mobile-search__btn:focus {
+  color: var(--tt-teal);
+}
+
+.mobile-search__btn svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+}

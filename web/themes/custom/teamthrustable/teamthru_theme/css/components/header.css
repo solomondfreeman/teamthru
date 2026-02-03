@@ -1,0 +1,289 @@
+/**
+ * @file
+ * Header component styles.
+ */
+
+.site-header {
+  background: linear-gradient(135deg, var(--tt-navy) 0%, var(--tt-navy-dark) 100%);
+  position: relative;
+  overflow: visible;
+  width: 100%;
+}
+
+.site-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(135deg, transparent 0%, rgba(46, 188, 176, 0.15) 100%);
+  pointer-events: none;
+}
+
+.header__top {
+  padding: var(--space-lg) 0;
+  position: relative;
+  z-index: 2;
+}
+
+.header__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header__logo a {
+  display: flex;
+  align-items: center;
+}
+
+.header__logo img {
+  height: 45px;
+  width: auto;
+}
+
+/* Larger logo on tablets and up */
+@media (min-width: 576px) {
+  .header__logo img {
+    height: 55px;
+  }
+}
+
+/* Even larger logo on desktop */
+@media (min-width: 768px) {
+  .header__logo img {
+    height: 65px;
+  }
+}
+
+@media (min-width: 992px) {
+  .header__logo img {
+    height: 75px;
+  }
+}
+
+.header__tagline {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border-left: 2px solid var(--tt-teal);
+  padding-left: var(--space-md);
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .header__tagline {
+    display: block;
+  }
+}
+
+/* Header Actions */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+/* Search */
+.header__search {
+  display: none;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .header__search {
+    display: block;
+  }
+}
+
+.header__search-form {
+  display: flex;
+  align-items: center;
+}
+
+.header__search input[type="search"],
+.header__search .form-search {
+  padding: var(--space-sm) var(--space-md);
+  padding-right: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius-sm);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--white);
+  font-size: var(--font-size-sm);
+  width: 200px;
+  transition: all var(--transition-base);
+}
+
+.header__search input[type="search"]::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.header__search input[type="search"]:focus {
+  outline: none;
+  border-color: var(--tt-teal);
+  background: rgba(255, 255, 255, 0.15);
+  width: 250px;
+}
+
+.header__search-btn,
+.header__search .form-submit {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--white);
+  cursor: pointer;
+  padding: var(--space-xs);
+}
+
+.header__search-btn:hover {
+  color: var(--tt-teal);
+}
+
+/* ==================== Drupal Search Block Overrides ==================== */
+/* Target the search block in the header region */
+.region-header-search,
+.block-search-form-block {
+  position: relative;
+}
+
+.region-header-search .block,
+.block-search-form-block {
+  margin: 0;
+}
+
+/* Hide the block title */
+.region-header-search .block__title,
+.block-search-form-block .block__title {
+  display: none;
+}
+
+/* Style the search form container */
+.region-header-search form,
+.block-search-form-block form,
+#search-block-form {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  margin: 0;
+}
+
+/* Style form items wrapper - must be relative for absolute positioning of button */
+.region-header-search .form-item,
+.block-search-form-block .form-item,
+#search-block-form .form-item {
+  margin: 0;
+  position: relative;
+  display: inline-block;
+}
+
+/* Style the search input */
+.region-header-search input[type="search"],
+.region-header-search input[type="text"],
+.region-header-search .form-search,
+.block-search-form-block input[type="search"],
+.block-search-form-block input[type="text"],
+#search-block-form input[type="search"],
+#search-block-form .form-search,
+.search-form .form-search,
+.search-block-form .form-search {
+  padding: 12px 50px 12px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--white);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family);
+  width: 250px;
+  transition: all var(--transition-base);
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.region-header-search input::placeholder,
+.block-search-form-block input::placeholder,
+#search-block-form input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.region-header-search input:focus,
+.block-search-form-block input:focus,
+#search-block-form input:focus {
+  outline: none;
+  border-color: var(--tt-teal);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+/* Style form actions (submit button container) */
+.region-header-search .form-actions,
+.block-search-form-block .form-actions,
+#search-block-form .form-actions {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin: 0;
+  padding: 0;
+  z-index: 2;
+}
+
+/* Style the submit button */
+.region-header-search input[type="submit"],
+.region-header-search .form-submit,
+.block-search-form-block input[type="submit"],
+.block-search-form-block .form-submit,
+#search-block-form input[type="submit"],
+#search-block-form .form-submit,
+.search-form .form-submit,
+.search-block-form .form-submit {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  padding: 0;
+  font-size: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-base);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='rgba(255,255,255,0.6)' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.region-header-search input[type="submit"]:hover,
+.block-search-form-block input[type="submit"]:hover,
+#search-block-form input[type="submit"]:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
+}
+
+/* Hide labels */
+.region-header-search label,
+.block-search-form-block label,
+#search-block-form label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

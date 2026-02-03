@@ -1,0 +1,62 @@
+/**
+ * @file
+ * Government banner component styles (HHS-style).
+ */
+
+.gov-banner {
+  background-color: var(--gray-lightest);
+  padding: var(--space-xs) 0;
+  font-size: var(--font-size-sm);
+  border-bottom: 1px solid var(--gray-lighter);
+}
+
+.gov-banner__inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  box-sizing: border-box;
+}
+
+.gov-banner__flag {
+  width: 20px;
+  height: 14px;
+  background: linear-gradient(to bottom, 
+    #BF0A30 0%, #BF0A30 7.7%, 
+    white 7.7%, white 15.4%,
+    #BF0A30 15.4%, #BF0A30 23.1%,
+    white 23.1%, white 30.8%,
+    #BF0A30 30.8%, #BF0A30 38.5%,
+    white 38.5%, white 46.2%,
+    #BF0A30 46.2%, #BF0A30 53.9%,
+    white 53.9%, white 61.6%,
+    #BF0A30 61.6%, #BF0A30 69.3%,
+    white 69.3%, white 77%,
+    #BF0A30 77%, #BF0A30 84.7%,
+    white 84.7%, white 92.4%,
+    #BF0A30 92.4%, #BF0A30 100%
+  );
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gov-banner__flag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 53.9%;
+  background-color: #002868;
+}
+
+.gov-banner__text {
+  color: var(--text-secondary);
+}
+
+.gov-banner__text strong {
+  color: var(--tt-navy);
+  font-weight: var(--font-weight-semibold);
+}

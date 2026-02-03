@@ -1,0 +1,40 @@
+global-styling:
+  version: 1.0
+  css:
+    base:
+      https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap: { type: external, minified: true }
+      css/base.css: {}
+    layout:
+      css/layout.css: {}
+    component:
+      css/components/gov-banner.css: {}
+      css/components/header.css: {}
+      css/components/navigation.css: {}
+      css/components/hero.css: {}
+      css/components/cards.css: {}
+      css/components/buttons.css: {}
+      css/components/forms.css: {}
+      css/components/footer.css: {}
+    theme:
+      css/theme.css: {}
+
+global-scripts:
+  version: 1.0
+  js:
+    js/navigation.js: {}
+    js/back-to-top.js: {}
+    js/accordion.js: {}
+  dependencies:
+    - core/drupal
+    - core/once
+
+hero-slider:
+  version: 1.0
+  css:
+    component:
+      css/components/hero-slider.css: {}
+  js:
+    js/hero-slider.js: {}
+  dependencies:
+    - core/drupal
+    - core/once

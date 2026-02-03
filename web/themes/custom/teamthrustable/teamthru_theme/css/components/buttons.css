@@ -1,0 +1,159 @@
+/**
+ * @file
+ * Button component styles.
+ */
+
+/* ==================== Base Button ==================== */
+.btn,
+.button,
+input[type="submit"],
+input[type="button"] {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: var(--space-sm) var(--space-xl);
+  font-family: var(--font-family);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.5;
+  text-decoration: none;
+  text-align: center;
+  border-radius: var(--border-radius-sm);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  white-space: nowrap;
+}
+
+.btn:focus,
+.button:focus,
+input[type="submit"]:focus,
+input[type="button"]:focus {
+  outline: 2px solid var(--tt-teal);
+  outline-offset: 2px;
+}
+
+/* ==================== Primary Button ==================== */
+.btn--primary,
+.button--primary,
+input[type="submit"] {
+  background-color: var(--tt-teal);
+  color: var(--tt-navy-dark);
+  border-color: var(--tt-teal);
+}
+
+.btn--primary:hover,
+.button--primary:hover,
+input[type="submit"]:hover {
+  background-color: var(--tt-teal-dark);
+  border-color: var(--tt-teal-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* ==================== Secondary Button ==================== */
+.btn--secondary,
+.button--secondary {
+  background-color: var(--tt-navy);
+  color: var(--white);
+  border-color: var(--tt-navy);
+}
+
+.btn--secondary:hover,
+.button--secondary:hover {
+  background-color: var(--tt-navy-dark);
+  border-color: var(--tt-navy-dark);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* ==================== Outline Buttons ==================== */
+.btn--outline,
+.button--outline {
+  background-color: transparent;
+  color: var(--tt-navy);
+  border-color: var(--tt-navy);
+}
+
+.btn--outline:hover,
+.button--outline:hover {
+  background-color: var(--tt-navy);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.btn--outline-light,
+.button--outline-light {
+  background-color: transparent;
+  color: var(--white);
+  border-color: var(--white);
+}
+
+.btn--outline-light:hover,
+.button--outline-light:hover {
+  background-color: var(--white);
+  color: var(--tt-navy);
+  text-decoration: none;
+}
+
+/* ==================== Button Sizes ==================== */
+.btn--sm,
+.button--sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+.btn--lg,
+.button--lg {
+  padding: var(--space-md) var(--space-2xl);
+  font-size: var(--font-size-lg);
+}
+
+/* ==================== Button Block ==================== */
+.btn--block,
+.button--block {
+  display: flex;
+  width: 100%;
+}
+
+/* ==================== Disabled State ==================== */
+.btn:disabled,
+.btn.is-disabled,
+.button:disabled,
+.button.is-disabled,
+input[type="submit"]:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ==================== Drupal Action Links ==================== */
+.action-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--space-lg);
+}
+
+.action-links li {
+  display: inline-block;
+  margin-right: var(--space-sm);
+}
+
+.action-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  padding: var(--space-xs) var(--space-md);
+  background-color: var(--tt-teal);
+  color: var(--tt-navy-dark);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  border-radius: var(--border-radius-sm);
+}
+
+.action-links a:hover {
+  background-color: var(--tt-teal-dark);
+  color: var(--white);
+  text-decoration: none;
+}

@@ -1,0 +1,33 @@
+name: TeamThru Theme
+type: theme
+description: 'HHS-style responsive theme for TeamThru - Minority & Veteran Owned Small Business specializing in Application Modernization and Cloud Engineering'
+core_version_requirement: ^10.3 || ^11
+base theme: false
+package: Custom
+
+libraries:
+  - teamthru_theme/global-styling
+  - teamthru_theme/global-scripts
+
+regions:
+  gov_banner: 'Government Banner'
+  header: 'Header'
+  header_search: 'Header Search'
+  primary_menu: 'Primary Navigation'
+  hero: 'Hero Section'
+  highlighted: 'Highlighted'
+  breadcrumb: 'Breadcrumb'
+  content_top: 'Content Top'
+  content: 'Content'
+  content_bottom: 'Content Bottom'
+  sidebar_first: 'Sidebar First'
+  sidebar_second: 'Sidebar Second'
+  footer_brand: 'Footer Brand'
+  footer_first: 'Footer First'
+  footer_second: 'Footer Second'
+  footer_third: 'Footer Third'
+  footer_social: 'Footer Social'
+  footer_bottom: 'Footer Bottom'
+
+ckeditor5-stylesheets:
+  - css/ckeditor5.css
